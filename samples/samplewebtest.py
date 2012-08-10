@@ -2,9 +2,11 @@ import webtest
 
 class SimpleWebtest(webtest.Webtest):
     def testGood(self):
-        assert(True)
+        car = self.request("http://google.com")
+        assert(car.responseInfo.status == 200)
     
     def testBad(self):
-        assert(False)
+        car = self.request("http://google.com")
+        assert(car.responseInfo.status != 200)
         
 
